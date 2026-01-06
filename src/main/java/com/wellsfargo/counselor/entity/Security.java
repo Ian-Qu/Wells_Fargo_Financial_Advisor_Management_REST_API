@@ -14,7 +14,7 @@ public class Security {
     private long securityId;
 
     @Column(nullable = false)
-    private long portfolioId;
+    private Portfolio portfolioId;
 
     @Column(nullable = false)
     private String name;
@@ -36,7 +36,7 @@ public class Security {
 
     }
 
-    public Security(long portfolioId, String name, String category, long purchasePrice, String purchaseDate, short quantity) {
+    public Security(Portfolio portfolioId, String name, String category, long purchasePrice, String purchaseDate, short quantity) {
         this.portfolioId = portfolioId;
         this.name = name;
         this.category = category;
@@ -49,11 +49,11 @@ public class Security {
         return securityId;
     }
 
-    public long getPortfolioId() {
+    public Portfolio getPortfolioId() {
         return portfolioId;
     }
 
-    public void setPortfolioId(long portfolioId) {
+    public void setPortfolioId(Portfolio portfolioId) {
         this.portfolioId = portfolioId;
     }
 

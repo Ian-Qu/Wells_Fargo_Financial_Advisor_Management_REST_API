@@ -14,7 +14,7 @@ public class Portfolio {
     private long portfolioId;
 
     @Column(nullable = false)
-    private long clientId;
+    private Client clientId;
 
     @Column(nullable = false)
     private String creationDate;
@@ -23,7 +23,7 @@ public class Portfolio {
 
     }
 
-    public Portfolio(long clientId, String creationDate) {
+    public Portfolio(Client clientId, String creationDate) {
         this.clientId = clientId;
         this.creationDate = creationDate;
     }
@@ -32,11 +32,11 @@ public class Portfolio {
         return portfolioId;
     }
 
-    public Long getClientId() {
+    public Client getClientId() {
         return clientId;
     }
 
-    public void setClientId(long clientId) {
+    public void setClientId(Client clientId) {
         this.clientId = clientId;
     }
 
