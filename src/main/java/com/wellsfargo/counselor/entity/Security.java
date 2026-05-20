@@ -45,8 +45,12 @@ public class Security {
         this.quantity = quantity;
     }
 
-    public getSecurityId() {
+    public long getSecurityId() {
         return securityId;
+    }
+    
+    public void setSecurityId(long securityId) {
+        this.securityId = securityId;
     }
 
     public Portfolio getPortfolioId() {
