@@ -1,20 +1,24 @@
 package com.wellsfargo.counselor.entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 public class Security {
 
     @Id
-    @GeneratedValue()
-    private long securityId;
+    @GeneratedValue
+    private Long securityId;
 
-    @Column(nullable = false)
-    private Portfolio portfolioId;
+    @ManyToOne
+    @JoinColumn(name = "portfolio_id", nullable = false)
+    private Portfolio portfolio;
 
     @Column(nullable = false)
     private String name;
@@ -22,22 +26,20 @@ public class Security {
     @Column(nullable = false)
     private String category;
 
-    @Column(nullable = false)
-    private long purchasePrice;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal purchasePrice;
 
     @Column(nullable = false)
-    private String purchaseDate;
+    private LocalDate purchaseDate;
 
     @Column(nullable = false)
     private short quantity;
 
-
     protected Security() {
-
     }
 
-    public Security(Portfolio portfolioId, String name, String category, long purchasePrice, String purchaseDate, short quantity) {
-        this.portfolioId = portfolioId;
+    public Security(Portfolio portfolio, String name, String category, BigDecimal purchasePrice, LocalDate purchaseDate, short quantity) {
+        this.portfolio = portfolio;
         this.name = name;
         this.category = category;
         this.purchasePrice = purchasePrice;
@@ -45,20 +47,16 @@ public class Security {
         this.quantity = quantity;
     }
 
-    public long getSecurityId() {
+    public Long getSecurityId() {
         return securityId;
     }
-    
-    public void setSecurityId(long securityId) {
-        this.securityId = securityId;
+
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public Portfolio getPortfolioId() {
-        return portfolioId;
-    }
-
-    public void setPortfolioId(Portfolio portfolioId) {
-        this.portfolioId = portfolioId;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public String getName() {
@@ -77,19 +75,19 @@ public class Security {
         this.category = category;
     }
 
-    public long getPurchasePrice() {
+    public BigDecimal getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(long purchasePrice) {
+    public void setPurchasePrice(BigDecimal purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public String getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(String purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
@@ -100,5 +98,4 @@ public class Security {
     public void setQuantity(short quantity) {
         this.quantity = quantity;
     }
-
 }
